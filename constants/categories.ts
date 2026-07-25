@@ -1,0 +1,55 @@
+import { Category } from "@/types/category";
+
+export const CATEGORIES: Category[] = [
+  {
+    id: "all",
+    name: "All Menu",
+    slug: "all",
+    iconName: "Utensils",
+    description: "Explore our full gourmet lineup of flame-grilled perfection.",
+    itemCount: 12,
+  },
+  {
+    id: "signature",
+    name: "Signature Burgers",
+    slug: "signature",
+    iconName: "Crown",
+    description: "100% Black Angus beef patties, aged cheddar, and house relish.",
+    itemCount: 4,
+    badge: "Chef Special",
+  },
+  {
+    id: "smash",
+    name: "Smash Burgers",
+    slug: "smash",
+    iconName: "Zap",
+    description: "Ultra-crispy edges, double melted cheese, and toasted brioche.",
+    itemCount: 3,
+    badge: "Trending",
+  },
+  {
+    id: "chicken",
+    name: "Crispy Chicken",
+    slug: "chicken",
+    iconName: "Drumstick",
+    description: "Buttermilk marinated crispy fried chicken breast with honey butter.",
+    itemCount: 3,
+  },
+  {
+    id: "plant",
+    name: "Plant-Based",
+    slug: "plant",
+    iconName: "Leaf",
+    description: "100% plant-based patties that deliver legendary beef flavor.",
+    itemCount: 2,
+    badge: "Vegan Friendly",
+  },
+  {
+    id: "sides",
+    name: "Sides & Fries",
+    slug: "sides",
+    iconName: "PackageCheck",
+    description: "Hand-cut truffle fries, crisp onion rings, and loaded bites.",
+    itemCount: 4,
+  },
+];

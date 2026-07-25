@@ -1,19 +1,229 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---------- Background ---------- */
+  --background: #fffdf8;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --foreground: #1f2937;
+
+  /* ---------- Brand ---------- */
+  --primary: #d62828;
+  --secondary: #f4b400;
+  --accent: #f77f00;
+
+  /* ---------- Status ---------- */
+  --success: #3fa34d;
+  --warning: #ffc107;
+  --danger: #d62828;
+  --info: #2563eb;
+
+  /* ---------- Burger Red ---------- */
+  --burger-red-50: #ffe8e8;
+  --burger-red-100: #ffd2d2;
+  --burger-red-200: #ffb5b5;
+  --burger-red-300: #ff8c8c;
+  --burger-red-400: #f15a5a;
+  --burger-red-500: #d62828;
+  --burger-red-600: #b71c1c;
+  --burger-red-700: #8f1414;
+
+  /* ---------- Burger Yellow ---------- */
+  --burger-yellow-50: #fff9e3;
+  --burger-yellow-100: #fff2bf;
+  --burger-yellow-200: #ffe68a;
+  --burger-yellow-300: #ffd54d;
+  --burger-yellow-400: #ffc107;
+  --burger-yellow-500: #f4b400;
+  --burger-yellow-600: #db9e00;
+  --burger-yellow-700: #b8860b;
+
+  /* ---------- Burger Orange ---------- */
+  --burger-orange-50: #fff1e6;
+  --burger-orange-100: #ffd9bf;
+  --burger-orange-200: #ffc08a;
+  --burger-orange-300: #ffa94d;
+  --burger-orange-400: #f98c26;
+  --burger-orange-500: #f77f00;
+  --burger-orange-600: #d96b00;
+  --burger-orange-700: #a54f00;
+
+  /* ---------- Burger Brown ---------- */
+  --burger-brown-50: #f7f2ef;
+  --burger-brown-100: #e9d9cf;
+  --burger-brown-200: #d2b7a2;
+  --burger-brown-300: #b78e73;
+  --burger-brown-400: #8a6047;
+  --burger-brown-500: #5a3825;
+  --burger-brown-600: #452a1c;
+  --burger-brown-700: #2f1b11;
+
+  /* ---------- Lettuce Green ---------- */
+  --burger-green-50: #eaf8ec;
+  --burger-green-100: #d2f0d7;
+  --burger-green-200: #aee5b8;
+  --burger-green-300: #82d48d;
+  --burger-green-400: #58c26a;
+  --burger-green-500: #3fa34d;
+  --burger-green-600: #2e7d32;
+  --burger-green-700: #1b5e20;
+
+  /* ---------- Premium Blue ---------- */
+  --burger-blue-50: #e8f1fb;
+  --burger-blue-100: #d2e3f8;
+  --burger-blue-200: #a9c8f0;
+  --burger-blue-300: #7eade8;
+  --burger-blue-400: #4e89dd;
+  --burger-blue-500: #1e64d6;
+  --burger-blue-600: #184eb0;
+  --burger-blue-700: #12355b;
+
+  /* ---------- Premium Gray ---------- */
+  --burger-gray-50: #f9fafb;
+  --burger-gray-100: #f3f4f6;
+  --burger-gray-200: #e5e7eb;
+  --burger-gray-300: #d1d5db;
+  --burger-gray-400: #9ca3af;
+  --burger-gray-500: #6b7280;
+  --burger-gray-600: #4b5563;
+  --burger-gray-700: #374151;
+  --burger-gray-800: #1f2937;
+  --burger-gray-900: #111827;
+
+  /* ---------- White & Black ---------- */
+  --white: #ffffff;
+  --off-white: #fffdf8;
+  --cream: #fff7e6;
+  --black: #000000;
+  --soft-black: #111111;
+  --charcoal: #1a1a1a;
+
+  /* ---------- Glass & Borders ---------- */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(214, 40, 40, 0.15);
+  --card-border: #f3f4f6;
+
+  /* ---------- Shadows & Glows ---------- */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.18);
+  --glow-red: 0 0 30px rgba(214, 40, 40, 0.25);
+  --glow-yellow: 0 0 30px rgba(244, 180, 0, 0.25);
+  --glow-orange: 0 0 30px rgba(247, 127, 0, 0.25);
+}
+
+.dark {
+  /* ---------- Background ---------- */
+  --background: #0d0f12;
+  --surface: #14171d;
+  --card: #1c202a;
+  --foreground: #f9fafb;
+
+  /* ---------- Brand ---------- */
+  --primary: #f04a4a;
+  --secondary: #ffc947;
+  --accent: #ff9f1c;
+
+  /* ---------- Status ---------- */
+  --success: #5dd46a;
+  --warning: #ffd166;
+  --danger: #ff5a5f;
+  --info: #60a5fa;
+
+  /* ---------- Glass & Borders ---------- */
+  --glass-bg: rgba(20, 23, 29, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.07);
+
+  /* ---------- Shadows & Glows ---------- */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.65);
+  --glow-red: 0 0 35px rgba(240, 74, 74, 0.4);
+  --glow-yellow: 0 0 35px rgba(255, 201, 71, 0.4);
+  --glow-orange: 0 0 35px rgba(255, 159, 28, 0.4);
 }
 
 @theme inline {
+  --font-bebas: var(--font-bebas);
+  --font-inter: var(--font-inter);
+
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --color-burger-red-500: var(--burger-red-500);
+  --color-burger-red-600: var(--burger-red-600);
+  --color-burger-yellow-500: var(--burger-yellow-500);
+  --color-burger-orange-500: var(--burger-orange-500);
+  --color-burger-brown-500: var(--burger-brown-500);
+  --color-burger-green-500: var(--burger-green-500);
+  --color-burger-gray-500: var(--burger-gray-500);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+.font-heading {
+  font-family: var(--font-bebas), sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.font-body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Glow effects */
+.glow-red {
+  box-shadow: var(--glow-red);
+}
+
+.glow-yellow {
+  box-shadow: var(--glow-yellow);
+}
+
+.glow-orange {
+  box-shadow: var(--glow-orange);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d62828;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f77f00;
 }
