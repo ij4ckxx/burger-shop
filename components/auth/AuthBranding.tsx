@@ -54,12 +54,14 @@ export const AuthBranding: React.FC = () => {
 
       {/* Top Header Badge */}
       <div className="relative z-10 flex items-center justify-between">
-        <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wider uppercase text-secondary">
-          <Sparkles className="w-3.5 h-3.5 text-secondary animate-pulse" />
-          <span>Gourmet Club Membership</span>
+        <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-400/35 shadow-xs">
+          <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+          <span className="text-xs font-bold tracking-wider uppercase text-amber-300">
+            Gourmet Club Membership
+          </span>
         </div>
-        <div className="hidden sm:flex items-center gap-1 text-xs text-white/70">
-          <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+        <div className="hidden sm:flex items-center gap-1.5 text-xs text-white/90 font-medium">
+          <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
           <span className="font-bold text-white">4.9/5</span> Rating
         </div>
       </div>
@@ -90,7 +92,7 @@ export const AuthBranding: React.FC = () => {
           {/* Bun Bottom Representation */}
           <div className="absolute top-26 w-48 h-10 rounded-b-2xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 shadow-xl border border-amber-400/20" />
 
-          {/* Floating Floating Badges */}
+          {/* Floating Badges */}
           <div className="floating-element-1 absolute -top-4 -left-6 px-3.5 py-2 rounded-2xl bg-surface/90 backdrop-blur-xl border border-white/20 text-foreground shadow-2xl flex items-center gap-2">
             <div className="w-7 h-7 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
               <Flame className="w-4 h-4" />

@@ -31,16 +31,22 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               checked={checked}
               disabled={disabled}
               onChange={onChange}
-              className="peer sr-only"
+              className="sr-only"
               {...props}
             />
             <div
               className={cn(
-                "w-5 h-5 rounded-md border-2 border-foreground/25 bg-surface transition-all duration-200 peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40 peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center shadow-xs",
-                error && "border-danger"
+                "w-5 h-5 rounded-md border-2 transition-all duration-200 flex items-center justify-center shadow-xs cursor-pointer",
+                checked
+                  ? "bg-primary border-primary text-white"
+                  : "bg-surface border-foreground/30 hover:border-foreground/50",
+                error && "border-danger",
+                disabled && "opacity-50 cursor-not-allowed"
               )}
             >
-              <Check className="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200 stroke-[3]" />
+              {checked && (
+                <Check className="w-3.5 h-3.5 text-white stroke-[3.5]" />
+              )}
             </div>
           </div>
           {label && <span>{label}</span>}

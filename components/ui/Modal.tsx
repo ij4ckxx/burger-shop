@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import gsap from "gsap";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -22,13 +23,51 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   showCloseButton = true,
 }) => {
-  const [mounted, setMounted] = React.useState(false);
-  const modalRef = useRef<HTMLDivElement>(null);
+  const [renderModal, setRenderModal] = useState(false);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    if (isOpen) {
+      setRenderModal(true);
+    } else if (renderModal) {
+      // Animate modal out smoothly with GSAP
+      if (backdropRef.current && contentRef.current) {
+        gsap.to(backdropRef.current, {
+          opacity: 0,
+          duration: 0.25,
+        });
+        gsap.to(contentRef.current, {
+          opacity: 0,
+          scale: 0.92,
+          y: 15,
+          duration: 0.25,
+          ease: "power2.in",
+          onComplete: () => setRenderModal(false),
+        });
+      } else {
+        setRenderModal(false);
+      }
+    }
+  }, [isOpen]);
 
+  useEffect(() => {
+    if (renderModal && backdropRef.current && contentRef.current) {
+      // Animate modal in with GSAP scale & fade
+      gsap.fromTo(
+        backdropRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power2.out" }
+      );
+      gsap.fromTo(
+        contentRef.current,
+        { opacity: 0, scale: 0.88, y: 25 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.38, ease: "back.out(1.4)" }
+      );
+    }
+  }, [renderModal]);
+
+  // Keyboard Escape trap
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && isOpen) {
@@ -47,34 +86,35 @@ export const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen, onClose]);
 
-  if (!mounted || !isOpen) return null;
+  if (!renderModal) return null;
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby={title ? "modal-title" : undefined}
     >
       {/* Backdrop with dark overlay and blur */}
       <div
-        className="fixed inset-0 bg-black/65 backdrop-blur-md transition-opacity duration-300 animate-fade-in"
+        ref={backdropRef}
+        className="fixed inset-0 bg-black/70 backdrop-blur-md opacity-0"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Modal Container */}
       <div
-        ref={modalRef}
+        ref={contentRef}
         className={cn(
-          "relative w-full max-w-lg rounded-3xl bg-surface border border-foreground/10 p-6 sm:p-8 shadow-2xl z-10 text-foreground transition-all duration-300 transform scale-100 animate-in fade-in zoom-in-95",
+          "relative w-full max-w-lg rounded-3xl bg-surface border border-foreground/10 p-6 sm:p-8 shadow-2xl z-10 text-foreground opacity-0",
           className
         )}
       >
         {showCloseButton && (
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-9 h-9 rounded-full bg-foreground/5 hover:bg-foreground/10 text-foreground/70 hover:text-foreground flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-9 h-9 rounded-full bg-foreground/5 hover:bg-foreground/10 text-foreground/70 hover:text-foreground flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
